@@ -3,8 +3,12 @@
 @section('content')
 
     <div class="container">
-        <img class="mb-4" src="../images/icone-logo.png" alt="" width="192" height="114">
+        {{--<div class="text-center">
+
+        </div>--}}
+
         <div class="row justify-content-center">
+            <img class="mb-4" src="../images/ics.png" alt="" width="192" height="114" >
             <div class="col-md-6">
                 {{--<div class="card">--}}
                 {{--<div class="card-header">{{ __('Login') }}</div>--}}
@@ -67,7 +71,7 @@
                         </div>
                     </div>
 
-                    <p class="mt-5 mb-4 text-muted">&copy; Icône Communication - {{ now()->year }} - info@iconecom.net</p>
+                    <p class="mt-5 mb-4 text-muted">&copy; Ivoire Cartes Systèmes - {{ now()->year }} - kacou.jeannette@ics.ci</p>
                 </form>
                 {{--</div>--}}
                 {{--</div>--}}

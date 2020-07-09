@@ -21,6 +21,12 @@ class DatabaseSeeder extends Seeder
             $this->command->call('migrate:refresh');
             $this->command->warn("Données éffacées, Base de données vierge.");
         }
+
+        $this->call(CreateSeederForTableCooperative::class);
+        $this->call(CreateSeederForTablePisteur::class);
+        $this->call(CreateSeederForTableProduit::class);
+        $this->call(CreateSeederForTableProducteur::class);
+
         // Seed  permissions par défaut
         $permissions = Permission::defaultPermissions();
         foreach ($permissions as $perms) {
@@ -52,6 +58,8 @@ class DatabaseSeeder extends Seeder
             Role::firstOrCreate(['name' => 'User']);
             $this->command->info('Ajouté seulement le role user par défaut.');
         }
+
+
         /**
          * Creation d'un Post pour seeder à ajouter a chaque fois qu une table est ajouté
          *
