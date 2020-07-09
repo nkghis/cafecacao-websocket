@@ -123,6 +123,7 @@ class VenteController extends Controller
     {
         $vente = Vente::find(1);
         $ev = new VenteEvent($vente);
+        dd($ev);
         event($ev);
         return 'ok';
     }

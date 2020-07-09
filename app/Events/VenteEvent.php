@@ -48,7 +48,7 @@ class VenteEvent implements ShouldBroadcast
             'id' => $this->vente->id,
             'poids'=>$this->vente->poids,
             'montant' => $this->vente->montant,
-            'date' => $this->vente->date,
+            'date' => $this->vente->created_at->format('d-m-Y H:i:s'),
             'pisteur' => $this->vente->pisteur->nom.' '.$this->vente->pisteur->prenom,
             'producteur' => $this->vente->producteur->nom.' '.$this->vente->producteur->prenom,
             'cooperative' => $this->vente->producteur->cooperative->libelle,
