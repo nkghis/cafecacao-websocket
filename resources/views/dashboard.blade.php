@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Gestion des ventes en temps réel')
 @section('css')
     {{--<link href="{{ asset('vendor') }}/DataTables/datatables.css" rel="stylesheet">--}}
 @endsection
