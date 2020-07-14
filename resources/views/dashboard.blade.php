@@ -15,7 +15,42 @@
             </div>
             <div id="app" class="card-body">
 
-                    <example-component></example-component>
+                    {{--<example-component></example-component>--}}
+                   {{-- <vente></vente>--}}
+
+                <div class="table-responsive">
+                    <table id="mytable" class="table table-sm">
+                        <thead>
+                        <tr>
+                            <!--<th>id</th>-->
+                            <th><strong>Pisteur</strong></th>
+                            <th><strong>Producteur</strong></th>
+                            <th ><strong>Cooperative</strong></th>
+                            <th><strong>Produit</strong></th>
+                            <th class="text-right"><strong>Poids (Kg)</strong></th>
+                            <th class="text-right"><strong>Montant</strong></th>
+                            <th><strong>Date</strong></th>
+                            <th><strong>Action</strong></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($result as $item)
+                        <tr >
+                            <td>{{ $item->pisteur->nom.' '.$item->pisteur->prenom}}</td>
+                            <td>{{ $item->producteur->nom.' '.$item->producteur->prenom }}</td>
+                            <td>{{ $item->producteur->cooperative->libelle }}</td>
+                            <td>{{ $item->produit->libelle}}</td>
+                            <td class="text-right">{{ $item->poids }}</td>
+                            <td class="text-right">{{ $item->montant}}</td>
+                            <td>{{ $item->created_at->format('d-m-Y H:i:s')}}</td>
+                            <td><a href="{!! route('maps', ['id'=>$item->id]) !!}" class="btn btn-sm btn-darker"><strong><i class="material-icons" style="color:green">my_location</i></strong>Localiser</a></td>
+                        </tr>
+                        @endforeach
+                        <mavente></mavente>
+                        </tbody>
+                    </table>
+
+                </div>
 
             </div>
         </div>
