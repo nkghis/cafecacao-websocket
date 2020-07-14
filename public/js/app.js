@@ -1946,70 +1946,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  /*
-          data() {
-  
-              return {
-                  vente: []
-              }
-          },
-  
-  
-          created() {
-  
-              this.listenForVente();
-          },
-  
-          methods: {
-  
-              listenForVente(){
-                  Echo.channel('channel-vente')
-                      .listen('VenteEvent', (e) => {
-  
-                          //this.vente = e;
-                          this.vente.push(e);
-                          console.log(e);
-                      });
-              }
-  
-  
-          },*/
-  mounted: function mounted() {
+  data: function data() {
+    return {
+      ventes: []
+    };
+  },
+  created: function created() {
     var _this = this;
+
+    axios.get('ventes').then(function (response) {
+      _this.ventes = response.data;
+    }); //console.log(ventes);
+  },
+  mounted: function mounted() {
+    var _this2 = this;
 
     /*listenForVente()
     {*/
     Echo.channel('channel-vente').listen('VenteEvent', function (e) {
-      _this.vente = e; //this.vente.push(e);
+      _this2.vente = e; //this.vente.push(e);
 
       /*  var table = document.getElementById('mytable');*/
 
@@ -47675,41 +47631,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "table-responsive" }, [
+    _c("table", { staticClass: "table table-sm", attrs: { id: "mytable" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.ventes, function(item) {
+          return _c("tr", [
+            _c("td", [_vm._v(_vm._s(item.pisteur))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(item.producteur))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(item.cooperative))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(item.produit))]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-right" }, [
+              _vm._v(_vm._s(item.poids))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-right" }, [
+              _vm._v(_vm._s(item.montant))
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(item.date))]),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-sm btn-darker",
+                  attrs: { href: "maps/" + item.id }
+                },
+                [_vm._m(1, true), _vm._v("Localiser")]
+              )
+            ])
+          ])
+        }),
+        0
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "table-responsive" }, [
-      _c("table", { staticClass: "table table-sm", attrs: { id: "mytable" } }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_c("strong", [_vm._v("Pisteur")])]),
-            _vm._v(" "),
-            _c("th", [_c("strong", [_vm._v("Producteur")])]),
-            _vm._v(" "),
-            _c("th", [_c("strong", [_vm._v("Cooperative")])]),
-            _vm._v(" "),
-            _c("th", [_c("strong", [_vm._v("Produit")])]),
-            _vm._v(" "),
-            _c("th", { staticClass: "text-right" }, [
-              _c("strong", [_vm._v("Poids (Kg)")])
-            ]),
-            _vm._v(" "),
-            _c("th", { staticClass: "text-right" }, [
-              _c("strong", [_vm._v("Montant")])
-            ]),
-            _vm._v(" "),
-            _c("th", [_c("strong", [_vm._v("Date")])]),
-            _vm._v(" "),
-            _c("th", [_c("strong", [_vm._v("Action")])])
-          ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_c("strong", [_vm._v("Pisteur")])]),
+        _vm._v(" "),
+        _c("th", [_c("strong", [_vm._v("Producteur")])]),
+        _vm._v(" "),
+        _c("th", [_c("strong", [_vm._v("Cooperative")])]),
+        _vm._v(" "),
+        _c("th", [_c("strong", [_vm._v("Produit")])]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-right" }, [
+          _c("strong", [_vm._v("Poids (Kg)")])
         ]),
         _vm._v(" "),
-        _c("tbody")
+        _c("th", { staticClass: "text-right" }, [
+          _c("strong", [_vm._v("Montant")])
+        ]),
+        _vm._v(" "),
+        _c("th", [_c("strong", [_vm._v("Date")])]),
+        _vm._v(" "),
+        _c("th", [_c("strong", [_vm._v("Action")])])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c(
+        "i",
+        { staticClass: "material-icons", staticStyle: { color: "green" } },
+        [_vm._v("my_location")]
+      )
     ])
   }
 ]

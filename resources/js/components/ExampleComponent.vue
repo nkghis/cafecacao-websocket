@@ -18,46 +18,18 @@
                             </thead>
                             <tbody>
 
-                           <!-- <tr>
-                               &lt;!&ndash; <th scope="row">1</th>&ndash;&gt;
-                                <td>{{vente.producteur}}</td>
-                                <td><button href="#" class="btn btn-sm btn-darker">Localiser</button></td>
-                                &lt;!&ndash;<td>KOUADIO ALPHONSE</td>
-                                <td>JEUNESSE ZATTRY</td>
-                                <td>CACAO</td>
-                                <td>400</td>
-                                <td>100000</td>
-                                <td>19/10/2020</td>&ndash;&gt;
 
-                            </tr>-->
-                           <!-- <tr>
-                                <th scope="row">1</th>
-                                <td>JEAN MARC MESSI</td>
-                                <td>KOUADIO ALPHONSE</td>
-                                <td>JEUNESSE ZATTRY</td>
-                                <td>CACAO</td>
-                                <td>400</td>
-                                <td>100000</td>
-                                <td>19/10/2020</td>
-                                <td><button href="#" class="btn btn-sm btn-darker">Localiser</button></td>
-                            </tr>-->
-                            <!--<tr>
-                                <th scope="row">2</th>
-                                <td>KOUASSI KOFFI MICHEL</td>
-                                <td>OUEDRAOGO BOUKARY</td>
-                                <td>OPAS DE COOPERATIVE</td>
-                                <td>CACAO</td>
-                                <td>800</td>
-                                <td>200000</td>
-                                <td>19/10/2020</td>
-                                <td><button href="#" class="btn btn-sm btn-darker">Localiser</button></td>
-                            </tr>-->
-                           <!-- <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>-->
+                            <tr  v-for="item in ventes">
+                                <td>{{ item.pisteur}}</td>
+                                <td>{{ item.producteur }}</td>
+                                <td>{{ item.cooperative }}</td>
+                                <td>{{ item.produit}}</td>
+                                <td class="text-right">{{ item.poids }}</td>
+                                <td class="text-right">{{ item.montant}}</td>
+                                <td>{{ item.date}}</td>
+                                <td><a :href="'maps/'+item.id" class="btn btn-sm btn-darker"><strong><i class="material-icons" style="color:green">my_location</i></strong>Localiser</a></td>
+                            </tr>
+
                             </tbody>
                         </table>
 
@@ -67,34 +39,24 @@
 <script>
     export default {
 
-/*
-        data() {
+
+        data : function() {
 
             return {
-                vente: []
+                ventes: []
             }
         },
 
 
-        created() {
+                created() {
 
-            this.listenForVente();
-        },
-
-        methods: {
-
-            listenForVente(){
-                Echo.channel('channel-vente')
-                    .listen('VenteEvent', (e) => {
-
-                        //this.vente = e;
-                        this.vente.push(e);
-                        console.log(e);
-                    });
-            }
+                    axios.get('ventes').then((response) => {
+                        this.ventes = response.data;
 
 
-        },*/
+                    })
+                    //console.log(ventes);
+                },
 
 
         mounted() {
@@ -129,6 +91,8 @@
                         )
                        /* console.log('Component mounted.')
                         console.log(e);*/
+
+
 
                     });
             /*}*/

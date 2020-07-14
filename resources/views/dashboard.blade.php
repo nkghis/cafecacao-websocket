@@ -29,7 +29,9 @@
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
-
+    {{--<script>
+        var markers = @json($mesventes);
+    </script>--}}
 
     {{--<script src="{{ asset('vendor') }}/DataTables/datatables.js"></script>
 
